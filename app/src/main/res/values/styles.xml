@@ -5,6 +5,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/CustomTextViewStyle</item>
     </style>
 
+    <style name="CustomTextViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 </resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+	android:elevation="5dp"
+    android:gravity="center_horizontal">
+
+	<androidx.appcompat.widget.AppCompatImageView
+		android:layout_marginTop="10dp"
+		android:layout_centerVertical="true"
+		android:id="@+id/ivStartLogo"
+		android:layout_alignParentStart="true"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginStart="20dp"
+		android:src="@drawable/ic_love_rounded" />
+
+    <com.google.android.material.textview.MaterialTextView
+		android:layout_marginBottom="10dp"
+		android:layout_centerVertical="true"
+		android:layout_marginEnd="10dp"
+		android:layout_marginStart="10dp"
+		android:gravity="center"
+		android:layout_toStartOf="@+id/ivEndLogo"
+		android:layout_toEndOf="@id/ivStartLogo"
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/main_activity_toolbar_title"
+        android:textSize="25sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+		android:layout_marginTop="10dp"
+		android:layout_centerVertical="true"
+		android:id="@+id/ivEndLogo"
+		android:layout_alignParentEnd="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_love_rounded" />
+</RelativeLayout>

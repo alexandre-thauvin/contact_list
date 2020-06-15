@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/ic_phone" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvNumberOfResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/contact_list_fragment_result_research"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/contact_item"
+        android:id="@+id/rvContact"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

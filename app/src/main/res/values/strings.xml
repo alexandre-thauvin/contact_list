@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Contact App</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_toolbar_title">Contact list</string>
+
+    <!-- ContactListFragment -->
+    <string name="contact_list_fragment_result_research"><b>%d</b> results of your research</string>
+    <string name="common_full_name">%s <b>%s</b></string>
+
+    <!-- ContactDetail-->
+    <string name="contact_detail_title">Contact detail</string>
+    <string name="contact_detail_gender">Gender</string>
+    <string name="contact_detail_full_name">Full name</string>
+    <string name="contact_detail_address">Address</string>
+    <string name="contact_detail_email">Email</string>
+    <string name="contact_detail_username">Username</string>
+    <string name="contact_detail_password">Password</string>
+    <string name="contact_detail_salt">Salt</string>
+    <string name="contact_detail_md5">md5</string>
+    <string name="contact_detail_sha1">sha1</string>
+    <string name="contact_detail_sha256">sha256</string>
+    <string name="contact_detail_registered">Registered</string>
+    <string name="contact_detail_dob">Dob</string>
+    <string name="contact_detail_phone">Phone</string>
+    <string name="contact_detail_cell">Cell</string>
+    <string name="contact_detail_id">Id</string>
+    <string name="contact_detail_nat">nat</string>
+
+    <!-- CommonError-->
+    <string name="common_error_bad_request">An error occurred</string>
+    <string name="common_error_server_error">Our server encountered a problem. Please retry later</string>
+    <string name="common_error_no_connection">It seems that your phone doesn\'t get any connection to the internet</string>
+
 </resources>
