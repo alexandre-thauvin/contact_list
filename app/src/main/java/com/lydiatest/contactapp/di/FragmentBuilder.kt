@@ -9,6 +9,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class FragmentBuilder {
 
-    /*@ContributesAndroidInjector
-    abstract fun contributeContactListFragment(): ContactListFragment*/
+    @ContributesAndroidInjector
+    abstract fun contributeContactListFragment(): ContactListFragment
 }
