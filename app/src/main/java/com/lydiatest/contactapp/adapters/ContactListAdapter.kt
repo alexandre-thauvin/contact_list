@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.lydiatest.contactapp.R
 import com.lydiatest.contactapp.di.ContactApp
 import com.lydiatest.contactapp.model.ContactResult
@@ -34,9 +35,12 @@ class ContactListAdapter(private val listener: (ContactResult.Contact) -> Unit) 
         }
 
         fun update(contact: ContactResult.Contact, listener: (ContactResult.Contact) -> Unit)= with(itemView) {
-            Glide.with(context)
-                .load(contact.picture.thumbnail)
-                .into(ivProfilePicture)
+            if (!contact.picture.thumbnail.isNullOrEmpty()) {
+                Glide.with(context)
+                    .load(contact.picture.large)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(ivProfilePicture)
+            }
             tvContactName.text = resources.getString(R.string.common_full_name, contact.name.first, contact.name.last)
             tvEmail.text = contact.email
             rlItem.setOnClickListener { listener(contact) }

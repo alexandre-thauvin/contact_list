@@ -15,12 +15,13 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivProfilePicture"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/ic_profile" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:textColor="@color/colorPrimaryDark"
         android:id="@+id/tvContactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

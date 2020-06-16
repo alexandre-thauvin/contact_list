@@ -5,8 +5,8 @@
     <string name="main_activity_toolbar_title">Contact list</string>
 
     <!-- ContactListFragment -->
-    <string name="contact_list_fragment_number_of_result"><b>%d</b> results</string>
-    <string name="common_full_name">%s <b>%s</b></string>
+    <string name="contact_list_fragment_number_of_result">%d results</string>
+    <string name="common_full_name">%s %s</string>
 
     <!-- ContactDetail-->
     <string name="contact_detail_title">Contact detail</string>

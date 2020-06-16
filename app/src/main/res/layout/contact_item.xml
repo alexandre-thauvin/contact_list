@@ -27,6 +27,8 @@
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/tvContactName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +43,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:text="pedro@sanchez.dev"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp" />
 
     </LinearLayout>

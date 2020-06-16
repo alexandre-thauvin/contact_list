@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.lydiatest.contactapp.model.ContactResult
 import kotlinx.android.synthetic.main.dialog_contact_detail.*
 import kotlinx.android.synthetic.main.info_item.view.*
@@ -36,9 +37,12 @@ class ContactDetailDialog : DialogFragment() {
         val bundle = arguments
         bundle?.let {
             contact = it.getSerializable(CONTACT) as ContactResult.Contact
-            Glide.with(requireContext())
-                .load(contact.picture.thumbnail)
-                .into(ivProfilePicture)
+            if (!contact.picture.thumbnail.isNullOrEmpty()) {
+                Glide.with(requireContext())
+                    .load(contact.picture.large)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(ivProfilePicture)
+            }
             tvContactName.text = getString(R.string.contact_detail_title_and_full_name,
                 contact.name.title, contact.name.first, contact.name.last)
             llGender.tvTitleInfo.text = getString(R.string.contact_detail_gender)
