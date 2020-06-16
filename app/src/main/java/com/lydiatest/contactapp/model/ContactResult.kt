@@ -1,13 +1,14 @@
 package com.lydiatest.contactapp.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
 data class ContactResult(
     @SerializedName("results")
     var contacts: MutableList<Contact> = mutableListOf()
-) {
+):Serializable {
 
     data class Contact(
         var gender: String = "",
@@ -22,20 +23,20 @@ data class ContactResult(
         var login: Login = Login(),
         var location: Location = Location(),
         var nat: String = ""
-    )
+    ):Serializable
 
     data class Name(
         var title: String = "",
         var first: String = "",
         var last: String = ""
-    )
+    ):Serializable
 
     data class Location(
         var street: String = "",
         var city: String = "",
         var state: String = "",
         var postcode: String = ""
-    )
+    ):Serializable
 
     data class Login(
         var username: String = "",
@@ -44,12 +45,12 @@ data class ContactResult(
         var md5: String = "",
         var sha1: String = "",
         var sha256: String = ""
-        )
+        ):Serializable
 
     data class Id(var name: String = "",
-    var value: String = "")
+    var value: String = ""):Serializable
 
     data class Picture(var large: String = "",
     var medium: String = "",
-    var thumbnail: String = "")
+    var thumbnail: String = ""):Serializable
 }

@@ -14,18 +14,24 @@
     <string name="contact_detail_full_name">Full name</string>
     <string name="contact_detail_address">Address</string>
     <string name="contact_detail_email">Email</string>
-    <string name="contact_detail_username">Username</string>
+    <string name="contact_detail_login">Login</string>
+    <string name="contact_detail_username">Username: %s</string>
     <string name="contact_detail_password">Password</string>
-    <string name="contact_detail_salt">Salt</string>
-    <string name="contact_detail_md5">md5</string>
-    <string name="contact_detail_sha1">sha1</string>
-    <string name="contact_detail_sha256">sha256</string>
+    <string name="contact_detail_salt">Salt: %s</string>
+    <string name="contact_detail_md5">md5: %s</string>
+    <string name="contact_detail_sha1">sha1: %s</string>
+    <string name="contact_detail_sha256">sha256: %s</string>
     <string name="contact_detail_registered">Registered</string>
     <string name="contact_detail_dob">Dob</string>
     <string name="contact_detail_phone">Phone</string>
     <string name="contact_detail_cell">Cell</string>
     <string name="contact_detail_id">Id</string>
     <string name="contact_detail_nat">nat</string>
+    <string name="contact_detail_address_format">%s\n%s %s\n%s</string>
+    <string name="contact_detail_title_and_full_name">%s %s %s</string>
+    <string name="contact_detail_password_hidden">*********</string>
+    <string name="contact_detail_login_format">%s\n%s\n%s\n%s\n%s</string>
+    <string name="contact_detail_id_format">name: %s\nvalue: %s</string>
 
     <!-- CommonError-->
     <string name="common_error_bad_request">An error occurred in the request</string>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="10dp"
+        android:src="@drawable/ic_close" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivProfilePicture"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_profile" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvContactName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Mr Pedro Sanchez"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/llGender"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llEmail"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llLocation"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llLogin"
+                layout="@layout/info_item" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTitlePassword"
+                    style="@style/TitleOfItemContactDetailTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_detail_password" />
+
+                <RelativeLayout
+                    android:id="@+id/rlPassword"
+                    android:layout_below="@id/tvTitlePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:gravity="center_vertical"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/tvPassword"
+                        style="@style/ValueOfItemContactDetailTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_detail_password_hidden" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_marginStart="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/tvPassword"
+                        android:id="@+id/ivEye"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_eye" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_below="@+id/rlPassword"
+                    style="@style/BarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp" />
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/llRegistered"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llDob"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llPhone"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llCell"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llId"
+                layout="@layout/info_item" />
+
+            <include
+                android:id="@+id/llNat"
+                layout="@layout/info_item" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

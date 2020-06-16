@@ -25,6 +25,8 @@ class ContactListFragment: BaseFragment() {
 
     private lateinit var adapter: ContactListAdapter
 
+    private val contactDetailDialog = ContactDetailDialog()
+
     @Inject
     lateinit var viewModel: ContactListViewModel
 
@@ -107,6 +109,9 @@ class ContactListFragment: BaseFragment() {
     }
 
     private fun onContactClicked(contact: ContactResult.Contact){
-
+        val bundle = Bundle()
+        bundle.putSerializable(ContactDetailDialog.CONTACT, contact)
+        contactDetailDialog.arguments = bundle
+        contactDetailDialog.show(parentFragmentManager, ContactDetailDialog::class.java.name)
     }
 }
