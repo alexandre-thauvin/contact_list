@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.contact_item.view.*
 /* Created by *-----* Alexandre Thauvin *-----* */
 
 class ContactListAdapter(private val listener: (ContactResult.Contact) -> Unit) : RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>() {
-    private val doctors = ArrayList<ContactResult.Contact>()
+    private val contacts = ArrayList<ContactResult.Contact>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.contact_item, parent, false)
@@ -22,11 +22,11 @@ class ContactListAdapter(private val listener: (ContactResult.Contact) -> Unit) 
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        holder.update(doctors[position], listener)
+        holder.update(contacts[position], listener)
     }
 
     override fun getItemCount(): Int {
-        return doctors.size
+        return contacts.size
     }
 
     class ContactViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -48,8 +48,8 @@ class ContactListAdapter(private val listener: (ContactResult.Contact) -> Unit) 
     }
 
     fun updateList(list: List<ContactResult.Contact>){
-        doctors.clear()
-        doctors.addAll(list)
+        contacts.clear()
+        contacts.addAll(list)
         notifyDataSetChanged()
     }
 }
