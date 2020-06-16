@@ -4,7 +4,6 @@ import com.lydiatest.contactapp.api.exceptions.BadRequestException
 import com.lydiatest.contactapp.api.exceptions.ServerErrorException
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.net.HttpURLConnection
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
