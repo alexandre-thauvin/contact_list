@@ -1,18 +1,18 @@
 package com.lydiatest.contactapp.di
 
-import android.app.Activity
 import android.app.Application
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
-class ContactApp: Application(), HasActivityInjector {
+class ContactApp: Application(), HasAndroidInjector {
 
     @Inject
-    lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -23,8 +23,9 @@ class ContactApp: Application(), HasActivityInjector {
         contactAppComponent.inject(this)
     }
 
-    override fun activityInjector(): DispatchingAndroidInjector<Activity> =
-        activityDispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> {
+        return dispatchingAndroidInjector
+    }
 
     companion object {
         lateinit var contactAppComponent: ContactAppComponent
