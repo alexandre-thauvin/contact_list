@@ -1,8 +1,10 @@
 package com.lydiatest.contactapp.di
 
 import android.app.Application
+import com.lydiatest.contactapp.adapters.ContactListAdapter
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
@@ -17,8 +19,8 @@ import javax.inject.Singleton
         ActivityBuilder::class]
 )
 
-interface ContactAppComponent {
-    //fun inject(messagingViewHolder: MessagingListAdapter.MessagingListViewHolder)
+interface ContactAppComponent : AndroidInjector<ContactApp> {
+    fun inject(contactViewHolder: ContactListAdapter.ContactViewHolder)
 
     @Component.Builder
     interface Builder {

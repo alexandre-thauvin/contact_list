@@ -10,5 +10,5 @@ import javax.inject.Singleton
 @Singleton
 class Repository @Inject constructor(private val apiService: ApiService) {
 
-    fun getContactsByPage(nbResults: String, page: String): Observable<ContactResult> = apiService.getContactsByPage(nbResults, page)
+    fun getContactsByPage(pageSize: String, page: String): Observable<ContactResult> = apiService.getContactsByPage(pageSize, page)
 }

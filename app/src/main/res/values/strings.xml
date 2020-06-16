@@ -5,7 +5,7 @@
     <string name="main_activity_toolbar_title">Contact list</string>
 
     <!-- ContactListFragment -->
-    <string name="contact_list_fragment_result_research"><b>%d</b> results of your research</string>
+    <string name="contact_list_fragment_number_of_result"><b>%d</b> results</string>
     <string name="common_full_name">%s <b>%s</b></string>
 
     <!-- ContactDetail-->
@@ -28,8 +28,8 @@
     <string name="contact_detail_nat">nat</string>
 
     <!-- CommonError-->
-    <string name="common_error_bad_request">An error occurred</string>
+    <string name="common_error_bad_request">An error occurred in the request</string>
     <string name="common_error_server_error">Our server encountered a problem. Please retry later</string>
     <string name="common_error_no_connection">It seems that your phone doesn\'t get any connection to the internet</string>
-
+    <string name="common_error_basic">An unknown error occurred</string>
 </resources>

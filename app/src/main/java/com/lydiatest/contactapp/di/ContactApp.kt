@@ -18,7 +18,7 @@ class ContactApp: Application(), HasActivityInjector {
         contactAppComponent = DaggerContactAppComponent.builder()
             .application(this)
             .build()
-        //contactAppComponent.inject(this)
+        contactAppComponent.inject(this)
     }
 
     override fun activityInjector(): DispatchingAndroidInjector<Activity> =

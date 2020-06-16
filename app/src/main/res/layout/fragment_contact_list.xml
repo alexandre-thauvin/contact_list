@@ -19,17 +19,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/contact_list_fragment_result_research"
+        android:text="@string/contact_list_fragment_number_of_result"
         android:textAlignment="center"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/contact_item"
-        android:id="@+id/rvContact"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp">
-    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_margin="10dp"
+        android:id="@+id/srList"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:listitem="@layout/contact_item"
+            android:id="@+id/rvContact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

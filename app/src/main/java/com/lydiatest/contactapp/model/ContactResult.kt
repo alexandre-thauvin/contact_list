@@ -34,7 +34,7 @@ data class ContactResult(
         var street: String = "",
         var city: String = "",
         var state: String = "",
-        var postcode: Int = -1
+        var postcode: String = ""
     )
 
     data class Login(
