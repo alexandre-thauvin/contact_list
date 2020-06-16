@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import timber.log.Timber
 import javax.inject.Inject
 
 /* Created by *-----* Alexandre Thauvin *-----* */
@@ -15,6 +16,7 @@ class ContactApp: Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+        Timber.plant(Timber.DebugTree())
         contactAppComponent = DaggerContactAppComponent.builder()
             .application(this)
             .build()
