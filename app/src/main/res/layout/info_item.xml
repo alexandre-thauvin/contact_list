@@ -6,14 +6,12 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTitleInfo"
-        android:text="@string/contact_detail_email"
         style="@style/TitleOfItemContactDetailTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvValueInfo"
-        android:text="pedro@sanchez.dev"
         style="@style/ValueOfItemContactDetailTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
