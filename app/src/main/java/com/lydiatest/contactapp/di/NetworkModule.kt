@@ -47,6 +47,7 @@ class NetworkModule {
                 chain.proceed(
                     chain.request()
                         .newBuilder()
+                        .addHeader("Connection", "close")
                         .build()
                 )
             }

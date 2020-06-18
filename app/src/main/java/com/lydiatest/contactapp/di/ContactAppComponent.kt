@@ -16,6 +16,7 @@ import javax.inject.Singleton
     [AndroidSupportInjectionModule::class,
         NetworkModule::class,
         ManagerModule::class,
+        RoomModule::class,
         ActivityBuilder::class]
 )
 

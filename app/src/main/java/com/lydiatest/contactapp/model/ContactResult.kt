@@ -1,5 +1,7 @@
 package com.lydiatest.contactapp.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -10,8 +12,10 @@ data class ContactResult(
     var contacts: MutableList<Contact> = mutableListOf()
 ):Serializable {
 
+    @Entity(tableName = "contacts")
     data class Contact(
         var gender: String = "",
+        @PrimaryKey
         var email: String = "",
         var registered: Long = 0,
         var dob: Long = 0,
