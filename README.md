@@ -33,6 +33,10 @@ The best library to log event instead of the standard Log library.
 8) Dagger2
 
 One of the best way to deal with dependencies. Dagger makes easy and fast the injection of dependency.
+
+9) Room
+
+One of the best library to make data persistent in a SQLite database.
 _________
 
 ## Architecture 
