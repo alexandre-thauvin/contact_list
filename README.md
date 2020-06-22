@@ -50,5 +50,3 @@ When I planned the app before start coding, I wanted to stay simple and pragmati
  want to include some useless stuff like a Splash screen because no loading time is needed for this app even if a splash screen is sometimes used for a good design.
 
 I tried to provide a design which is nice to watch but to do not overload it.
-
-To be honest, I'm lacking experience about testing so I didn't make any test. This is an important element that I'm currently working on it.
