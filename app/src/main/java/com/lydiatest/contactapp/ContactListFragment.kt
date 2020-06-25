@@ -85,7 +85,7 @@ class ContactListFragment : BaseFragment() {
         disposable.add(viewModel.getContactByPages()
             .doOnError { e ->
                 srList.isRefreshing = false
-                if (viewModel.launch){
+                if (viewModel.launch) {
                     Timber.e("get contacts database")
                     getContactsFromDatabase()
                 }
@@ -111,7 +111,7 @@ class ContactListFragment : BaseFragment() {
             .subscribe({ result ->
                 srList.isRefreshing = false
                 viewModel.page++
-                if (dataStorage.getBoolean(IS_FROM_CACHE)){//need a variable to clean the database after a first successful fetch
+                if (dataStorage.getBoolean(IS_FROM_CACHE)) {//need a variable to clean the database after a first successful fetch
                     dataStorage.putBoolean(IS_FROM_CACHE, false).subscribe()
                     viewModel.contacts.clear()
                     cleanContactListOfDatabase()
@@ -135,16 +135,14 @@ class ContactListFragment : BaseFragment() {
             }
             .subscribe({
                 srList.isRefreshing = false
-                if (viewModel.launch) {
-                    viewModel.launch = false
-                    viewModel.contacts.addAll(it)
-                    adapter.updateList(viewModel.contacts)
-                    tvNumberOfResult.text = getString(
-                        R.string.contact_list_fragment_number_of_result,
-                        viewModel.contacts.size
-                    )
-                    dataStorage.putBoolean(IS_FROM_CACHE, true).subscribe()
-                }
+                viewModel.launch = false
+                viewModel.contacts.addAll(it)
+                adapter.updateList(viewModel.contacts)
+                tvNumberOfResult.text = getString(
+                    R.string.contact_list_fragment_number_of_result,
+                    viewModel.contacts.size
+                )
+                dataStorage.putBoolean(IS_FROM_CACHE, true).subscribe()
             }, Throwable::printStackTrace)
         )
     }
@@ -160,7 +158,7 @@ class ContactListFragment : BaseFragment() {
         )
     }
 
-    private fun cleanContactListOfDatabase(){
+    private fun cleanContactListOfDatabase() {
         disposable.add(viewModel.cleanContactList()
             .doOnError {
                 Timber.e("clean table error")
@@ -178,6 +176,7 @@ class ContactListFragment : BaseFragment() {
         contactDetailDialog.arguments = bundle
         contactDetailDialog.show(parentFragmentManager, ContactDetailDialog::class.java.name)
     }
+
     companion object {
         const val IS_FROM_CACHE = "IS_FROM_CACHE"
     }

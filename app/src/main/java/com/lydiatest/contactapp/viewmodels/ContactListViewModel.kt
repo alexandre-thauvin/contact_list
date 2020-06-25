@@ -6,6 +6,7 @@ import com.lydiatest.contactapp.model.ContactResult
 import com.lydiatest.contactapp.utils.SchedulerProvider
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
@@ -18,9 +19,9 @@ class ContactListViewModel(private val repository: Repository, private val sched
             .compose(schedulerProvider.getSchedulersForObservable())
     }
 
-    fun getContactFromDatabase(): Observable<List<ContactResult.Contact>>{
+    fun getContactFromDatabase(): Single<List<ContactResult.Contact>>{
         return contactDao.getContacts()
-            .compose(schedulerProvider.getSchedulersForObservable())
+            .compose(schedulerProvider.getSchedulersForSingle())
     }
 
     fun insertAllContactsToDataBase(): Completable {

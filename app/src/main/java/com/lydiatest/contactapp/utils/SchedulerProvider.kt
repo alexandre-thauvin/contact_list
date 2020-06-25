@@ -1,9 +1,6 @@
 package com.lydiatest.contactapp.utils
 
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Observable
-import io.reactivex.Scheduler
+import io.reactivex.*
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
@@ -12,6 +9,13 @@ class SchedulerProvider(private val backgroundScheduler: Scheduler, private val 
     fun <T> getSchedulersForObservable(): (Observable<T>) -> Observable<T> {
         return { observable: Observable<T> ->
             observable.subscribeOn(backgroundScheduler)
+                .observeOn(foregroundScheduler)
+        }
+    }
+
+    fun <T> getSchedulersForSingle(): (Single<T>) -> Single<T> {
+        return { single: Single<T> ->
+            single.subscribeOn(backgroundScheduler)
                 .observeOn(foregroundScheduler)
         }
     }
