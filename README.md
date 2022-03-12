@@ -8,23 +8,23 @@ Androidx is replacing the Android support Library. So it's naturally that I have
 
 2) Google Material
 
-I used Google Material for a better design
+I used Google Material for a better design.
 
-3) RxJava2
+3) Coroutines
 
-In my opinion the best library to deal with the asynchronous stuff
+Definitely the best library to work with asynchronous stuff.
 
 4) Retrofit2
 
-In my opinion the best library to deal with network call
+In my opinion the best library to deal with network call.
 
 5) okHttp
 
-Used to handle connection Issue and intercept api error
+Used to handle connection Issue and intercept api error.
 
 6) Glide
 
-The best library to render picture
+The best library to render picture.
 
 7) Timber
 
@@ -36,7 +36,7 @@ One of the best way to deal with dependencies. Dagger makes easy and fast the in
 
 9) Room
 
-One of the best library to make data persistent in a SQLite database.
+The best library to make data persistent in a SQLite database.
 _________
 
 ## Architecture 
