@@ -1,6 +1,7 @@
 package com.lydiatest.contactapp
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.lydiatest.contactapp.api.exceptions.BadRequestException
 import com.lydiatest.contactapp.api.exceptions.ServerErrorException
 import com.lydiatest.contactapp.base.BaseFragment
 import com.lydiatest.contactapp.model.ContactResult
+import com.lydiatest.contactapp.model.LoadingState
 import com.lydiatest.contactapp.utils.DataStorage
 import com.lydiatest.contactapp.viewmodels.ContactListViewModel
 import kotlinx.android.synthetic.main.fragment_contact_list.*
@@ -53,12 +55,47 @@ class ContactListFragment : BaseFragment() {
         rvContact.itemAnimator = DefaultItemAnimator()
         adapter = ContactListAdapter(this::onContactClicked)
         rvContact.adapter = adapter
-        getContacts()
+        initObservers()
+        viewModel.getContactByPages(false)
+    }
+
+    private fun initObservers(){
+        viewModel.contactsLiveData.observe(viewLifecycleOwner) {
+            adapter.updateList(it.contacts)
+            tvNumberOfResult.text = getString(
+                R.string.contact_list_fragment_number_of_result,
+                it.contacts.size
+            )
+        }
+        viewModel.loadingState.observe(viewLifecycleOwner) {
+            when (it.state){
+                LoadingState.Status.SUCCESS -> {
+                    srList.isRefreshing = false
+                }
+                LoadingState.Status.FAILED -> {
+                    srList.isRefreshing = false
+                    val msg = if (!TextUtils.isEmpty(it.msg)){
+                        it.msg
+                    }
+                    else {
+                        if (it.resId != null)
+                            getString(it.resId!!)
+                        else
+                            getString(R.string.common_error_basic)
+                    }
+                    Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
+                }
+                LoadingState.Status.RUNNING -> {
+                    srList.isRefreshing = true
+                }
+            }
+        }
     }
 
     private fun initListeners() {
         srList.setOnRefreshListener {
-            viewModel.page = 1; viewModel.contacts.clear(); getContacts()
+            viewModel.page = 1
+            viewModel.getContactByPages(true)
         }
 
         rvContact.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -73,101 +110,11 @@ class ContactListFragment : BaseFragment() {
                         && firstVisibleItemPosition >= 0
                         && totalItemCount >= ContactListViewModel.PAGE_SIZE
                     ) {
-                        getContacts()
+                        viewModel.getContactByPages(false)
                     }
                 }
             }
         })
-    }
-
-    private fun getContacts() {
-        srList.isRefreshing = true
-        disposable.add(viewModel.getContactByPages()
-            .doOnError { e ->
-                srList.isRefreshing = false
-                if (viewModel.launch) {
-                    Timber.e("get contacts database")
-                    getContactsFromDatabase()
-                }
-                e.localizedMessage?.let {
-                    Timber.e(it)
-                }
-                val message = when (e) {
-                    is BadRequestException -> {
-                        getString(R.string.common_error_bad_request)
-                    }
-                    is ServerErrorException -> {
-                        getString(R.string.common_error_server_error)
-                    }
-                    is UnknownHostException -> {
-                        getString(R.string.common_error_no_connection)
-                    }
-                    else -> {
-                        getString(R.string.common_error_basic)
-                    }
-                }
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-            }
-            .subscribe({ result ->
-                srList.isRefreshing = false
-                viewModel.page++
-                if (dataStorage.getBoolean(IS_FROM_CACHE)) {//need a variable to clean the database after a first successful fetch
-                    dataStorage.putBoolean(IS_FROM_CACHE, false).subscribe()
-                    viewModel.contacts.clear()
-                    cleanContactListOfDatabase()
-                }
-                viewModel.contacts.addAll(result.contacts)
-                saveContactsToDatabase()
-                adapter.updateList(viewModel.contacts)
-                tvNumberOfResult.text = getString(
-                    R.string.contact_list_fragment_number_of_result,
-                    viewModel.contacts.size
-                )
-            }, Throwable::printStackTrace)
-        )
-    }
-
-    private fun getContactsFromDatabase() {
-        srList.isRefreshing = true
-        disposable.add(viewModel.getContactFromDatabase()
-            .doOnError {
-                srList.isRefreshing = false
-            }
-            .subscribe({
-                srList.isRefreshing = false
-                viewModel.launch = false
-                viewModel.contacts.addAll(it)
-                adapter.updateList(viewModel.contacts)
-                tvNumberOfResult.text = getString(
-                    R.string.contact_list_fragment_number_of_result,
-                    viewModel.contacts.size
-                )
-                dataStorage.putBoolean(IS_FROM_CACHE, true).subscribe()
-            }, Throwable::printStackTrace)
-        )
-    }
-
-    private fun saveContactsToDatabase() {
-        disposable.add(viewModel.insertAllContactsToDataBase()
-            .doOnError {
-                Timber.e("Insert error")
-            }
-            .subscribe({
-                Timber.d("Contacts saved")
-            }, Throwable::printStackTrace)
-        )
-    }
-
-    private fun cleanContactListOfDatabase() {
-        disposable.add(viewModel.cleanContactList()
-            .doOnError {
-                Timber.e("clean table error")
-
-            }
-            .subscribe({
-                Timber.e("Table cleaned")
-            }, Throwable::printStackTrace)
-        )
     }
 
     private fun onContactClicked(contact: ContactResult.Contact) {

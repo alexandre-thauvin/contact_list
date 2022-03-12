@@ -9,7 +9,7 @@ import java.io.Serializable
 
 data class ContactResult(
     @SerializedName("results")
-    var contacts: MutableList<Contact> = mutableListOf()
+    var contacts: List<Contact> = listOf()
 ):Serializable {
 
     @Entity(tableName = "contacts")

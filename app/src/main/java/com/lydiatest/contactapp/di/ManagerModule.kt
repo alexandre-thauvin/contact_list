@@ -13,5 +13,5 @@ import dagger.Provides
 class ManagerModule {
 
     @Provides
-    fun provideContactListViewModel(repository: Repository, schedulerProvider: SchedulerProvider, contactDao: ContactDao) = ContactListViewModel(repository, schedulerProvider, contactDao)
+    fun provideContactListViewModel(repository: Repository, contactDao: ContactDao) = ContactListViewModel(repository)
 }

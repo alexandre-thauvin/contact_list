@@ -18,7 +18,7 @@ class ApiInterceptor : Interceptor {
         val requestBuilder = originalRequest.newBuilder()
         val response = chain.proceed(requestBuilder.build())
 
-        when (response.code()){
+        when (response.code){
             ApiCode.BAD_REQUEST -> throw BadRequestException()
             ApiCode.SERVER_ERROR -> throw ServerErrorException()
             else -> return response

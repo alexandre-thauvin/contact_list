@@ -9,5 +9,5 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET(ApiRouting.URL_GET_CONTACTS)
-    fun getContactsByPage(@Query("results") pageSize: String, @Query("page") page: String): Observable<ContactResult>
+    suspend fun getContactsByPage(@Query("results") pageSize: Int, @Query("page") page: Int): ContactResult
 }

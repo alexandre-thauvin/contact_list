@@ -4,11 +4,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.lydiatest.contactapp.api.ApiInterceptor
 import com.lydiatest.contactapp.api.ApiService
-import com.lydiatest.contactapp.utils.SchedulerProvider
 import dagger.Module
 import dagger.Provides
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,14 +18,6 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
-    @Provides
-    @Singleton
-    fun provideSchedulerProvider() = SchedulerProvider(
-        Schedulers.io(),
-        AndroidSchedulers.mainThread()
-    )
-
     @Provides
     @Singleton
     fun provideGson(): Gson {
