@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.lydiatest.contactapp.model.ContactResult
 import com.lydiatest.contactapp.model.LoadingState
 import com.lydiatest.contactapp.utils.DataStorage
 import com.lydiatest.contactapp.viewmodels.ContactListViewModel
+import com.lydiatest.contactapp.viewmodels.ContactListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_contact_list.*
 import javax.inject.Inject
 
@@ -29,7 +31,9 @@ class ContactListFragment : BaseFragment() {
     private lateinit var dataStorage: DataStorage
 
     @Inject
-    lateinit var viewModel: ContactListViewModel
+    lateinit var viewModelFactory: ContactListViewModelFactory
+
+    private lateinit var viewModel: ContactListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +44,7 @@ class ContactListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ContactListViewModel::class.java)
         dataStorage = DataStorage(requireContext())
         initView()
         initListeners()

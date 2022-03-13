@@ -2,6 +2,7 @@ package com.lydiatest.contactapp.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.lydiatest.contactapp.R
 import com.lydiatest.contactapp.api.Repository
@@ -14,10 +15,12 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.net.UnknownHostException
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
-class ContactListViewModel(private val repository: Repository) :
+class ContactListViewModel @Inject constructor(private val repository: Repository) :
     ViewModel() {
     var page = 1
     val contactsLiveData: MutableLiveData<ContactResult> = MutableLiveData()
@@ -99,5 +102,16 @@ class ContactListViewModel(private val repository: Repository) :
 
     companion object {
         const val PAGE_SIZE = 10
+    }
+}
+
+@Singleton
+class ContactListViewModelFactory @Inject constructor(private val repository: Repository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(ContactListViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return ContactListViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
