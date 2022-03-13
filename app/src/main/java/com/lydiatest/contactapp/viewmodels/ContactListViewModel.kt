@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.net.UnknownHostException
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /* Created by *-----* Alexandre Thauvin *-----* */
 
@@ -105,7 +104,6 @@ class ContactListViewModel @Inject constructor(private val repository: Repositor
     }
 }
 
-@Singleton
 class ContactListViewModelFactory @Inject constructor(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ContactListViewModel::class.java)) {

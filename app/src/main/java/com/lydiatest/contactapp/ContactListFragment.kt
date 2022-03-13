@@ -44,7 +44,7 @@ class ContactListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ContactListViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(), viewModelFactory).get(ContactListViewModel::class.java)
         dataStorage = DataStorage(requireContext())
         initView()
         initListeners()
@@ -57,7 +57,9 @@ class ContactListFragment : BaseFragment() {
         adapter = ContactListAdapter(this::onContactClicked)
         rvContact.adapter = adapter
         initObservers()
-        viewModel.getContactByPages(false)
+        if (viewModel.isInit) {
+            viewModel.getContactByPages(false)
+        }
     }
 
     private fun initObservers(){
