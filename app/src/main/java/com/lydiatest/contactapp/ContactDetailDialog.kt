@@ -23,8 +23,7 @@ class ContactDetailDialog : DialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.dialog_contact_detail, container)
-        return v
+        return inflater.inflate(R.layout.dialog_contact_detail, container)
     }
 
     override fun onViewCreated(v: View, savedInstanceState: Bundle?) {

@@ -10,16 +10,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lydiatest.contactapp.adapters.ContactListAdapter
-import com.lydiatest.contactapp.api.exceptions.BadRequestException
-import com.lydiatest.contactapp.api.exceptions.ServerErrorException
 import com.lydiatest.contactapp.base.BaseFragment
 import com.lydiatest.contactapp.model.ContactResult
 import com.lydiatest.contactapp.model.LoadingState
 import com.lydiatest.contactapp.utils.DataStorage
 import com.lydiatest.contactapp.viewmodels.ContactListViewModel
 import kotlinx.android.synthetic.main.fragment_contact_list.*
-import timber.log.Timber
-import java.net.UnknownHostException
 import javax.inject.Inject
 
 /* Created by *-----* Alexandre Thauvin *-----* */
@@ -28,7 +24,7 @@ class ContactListFragment : BaseFragment() {
 
     private lateinit var adapter: ContactListAdapter
 
-    private val contactDetailDialog = ContactDetailDialog()
+    private lateinit var contactDetailDialog:ContactDetailDialog
 
     private lateinit var dataStorage: DataStorage
 
@@ -120,11 +116,10 @@ class ContactListFragment : BaseFragment() {
     private fun onContactClicked(contact: ContactResult.Contact) {
         val bundle = Bundle()
         bundle.putSerializable(ContactDetailDialog.CONTACT, contact)
+        if (!::contactDetailDialog.isInitialized) {
+            contactDetailDialog = ContactDetailDialog()
+        }
         contactDetailDialog.arguments = bundle
         contactDetailDialog.show(parentFragmentManager, ContactDetailDialog::class.java.name)
-    }
-
-    companion object {
-        const val IS_FROM_CACHE = "IS_FROM_CACHE"
     }
 }
